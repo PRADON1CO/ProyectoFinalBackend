@@ -43,12 +43,9 @@ export const editarClase = async (req, res) => {
     if (!claseBuscada) {
       res.status(400).json({ mensaje: `La clase ${req.params.id} no existe` });
     }
-    console.log(req.params.id)
-    console.log(req.body)
     const claseEditada = await Clase.findByIdAndUpdate(req.params.id, req.body, {new: true} )
-    console.log(claseEditada)
-    res.status(200).json({mensaje: 'La clase fue editada correctamente'})
 
+    res.status(200).json({mensaje: 'La clase fue editada correctamente'})
   } catch (error) {
     console.error(error);
     res.status(500).json({
