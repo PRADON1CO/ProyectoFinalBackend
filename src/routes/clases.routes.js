@@ -1,17 +1,9 @@
 import { Router } from "express";
+import { listarProductos } from "../controllers/clases.controllers.js";
 
 const router = Router();
 
-// app.get('/prueba', (req, res)=>{
-//     console.log('prueba  de solucitud get')
-//     //enviar respuesta
-//     res.send('desde mi backend de Fit Factory')
-// })
-
 //creo rutas
-router.route('/prueba').get((req, res)=>{
-    console.log('prueba  de solucitud get')
-    //enviar respuesta
-    res.send('desde mi backend de Fit Factory')
-    })
+router.route('/prueba').get(listarProductos);
+
 export default router;
