@@ -2,6 +2,8 @@ import express from "express"
 import cors from 'cors';
 import morgan from 'morgan'
 import './src/batabase/database.js'
+import path from "path";
+import { fileURLToPath } from 'url';
 
 //1- configuro un puerto
 const app = express();
@@ -19,7 +21,9 @@ app.use(morgan('dev')) //datos extras en la terminal
 app.use(express.json());
 app.use(express.urlencoded({extende:true}));
 //coonfigurar un archivo estatico
-
+const __file = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__file)
+app.use(express.static(path.join(__dirname, '/public')))
 
 //3- creo las rutas
 //http://localhost:4001/prueba
