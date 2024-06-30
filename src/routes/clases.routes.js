@@ -5,6 +5,6 @@ const router = Router();
 
 //creo rutas
 router.route('/prueba').get(listarClases);
-router.route('/clases').post(CrearClase)
+router.route('/clases').post(CrearClase).get(listarClases).put().delete()
 
 export default router
