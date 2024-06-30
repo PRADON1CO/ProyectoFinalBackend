@@ -4,6 +4,7 @@ import morgan from 'morgan'
 import './src/batabase/database.js'
 import path from "path";
 import { fileURLToPath } from 'url';
+import claseRouter from "./src/routes/clases.routes.js";
 
 //1- configuro un puerto
 const app = express();
@@ -26,10 +27,12 @@ const __dirname = path.dirname(__file)
 app.use(express.static(path.join(__dirname, '/public')))
 
 //3- creo las rutas
-//http://localhost:4001/prueba
+//http://localhost:4001/api/prueba
 
-app.get('/prueba', (req, res)=>{
-    console.log('prueba  de solucitud get')
-    //enviar respuesta
-    res.send('desde mi backend de Fit Factory')
-})
+// app.get('/prueba', (req, res)=>{
+//     console.log('prueba  de solucitud get')
+//     //enviar respuesta
+//     res.send('desde mi backend de Fit Factory')
+// })
+
+app.use('/api', claseRouter)
