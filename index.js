@@ -1,6 +1,7 @@
 import express from "express"
 import cors from 'cors';
 import morgan from 'morgan'
+import './src/batabase/database.js'
 
 //1- configuro un puerto
 const app = express();
