@@ -1,9 +1,10 @@
 import { Router } from "express";
-import { listarProductos } from "../controllers/clases.controllers.js";
+import { CrearClase, listarClases } from "../controllers/clases.controllers.js";
 
 const router = Router();
 
 //creo rutas
-router.route('/prueba').get(listarProductos);
+router.route('/prueba').get(listarClases);
+router.route('/clase').post(CrearClase)
 
-export default router;
+export default router
