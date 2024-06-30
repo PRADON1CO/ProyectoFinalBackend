@@ -43,9 +43,13 @@ export const editarClase = async (req, res) => {
     if (!claseBuscada) {
       res.status(400).json({ mensaje: `La clase ${req.params.id} no existe` });
     }
-    const claseEditada = await Clase.findByIdAndUpdate(req.params.id, req.body, {new: true} )
+    const claseEditada = await Clase.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true }
+    );
 
-    res.status(200).json({mensaje: 'La clase fue editada correctamente'})
+    res.status(200).json({ mensaje: "La clase fue editada correctamente" });
   } catch (error) {
     console.error(error);
     res.status(500).json({
@@ -68,5 +72,25 @@ export const CrearClase = async (req, res) => {
     res.status(500).json({
       mensaje: "Ocurrio un error, no se pudo crear la clase",
     });
+  }
+};
+
+export const borraClase = async (req, res) => {
+  try {
+    //verificar existencia del id
+    const claseBuscada = await Clase.findById(req.params.id);
+    //quiero saber si la clasebuscada es null
+    if (!claseBuscada) {
+      res.status(400).json({ mensaje: `La clase ${req.params.id} no existe` });
+    }
+    //pedir eliminar el producto de la BD
+    await Clase.findByIdAndDelete(req.params.id)
+    // responder al front
+    res.status(200).json({mensaje: 'La clase fue eliminada correctamente'})
+  } catch (error) {
+    console.error(error);
+    res
+      .status(500)
+      .jsom({ mensje: "ocurrio un error al intentar borrar una clase" });
   }
 };
