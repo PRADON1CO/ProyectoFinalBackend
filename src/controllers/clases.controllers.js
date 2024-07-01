@@ -1,3 +1,4 @@
+import { validationResult } from "express-validator";
 import Clase from "../batabase/moduels/clase.js";
 
 export const listarClases = async (req, res) => {
@@ -60,12 +61,12 @@ export const editarClase = async (req, res) => {
 
 export const CrearClase = async (req, res) => {
   try {
-    //validar los datos de la clase del -----
-    //le vamos a pedir a la BD crear la clase
-    console.log(req.body);
+    const errors = validationResult(req);
+    if(!errors.isEmpty()){
+      return res.status(400).json({errores: errors.array()})
+    }
     const claseNueva = new Clase(req.body);
     await claseNueva.save();
-    //enviar la respuesta de lo sucedido
     res.status(201).json({ mensaje: "La clase fue creada correctamente" });
   } catch (error) {
     console.error(error);
