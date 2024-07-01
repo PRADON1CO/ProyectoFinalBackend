@@ -2,12 +2,19 @@
   "name": "proyectofinalbackend",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "start": "node index.js",
-    "dev": "node --watch index.js"
+    "start": "node --env-file .env index.js",
+    "dev": "node --env-file .env --watch index.js"
   },
   "keywords": [],
   "author": "Valdez Natasha Micaela, Prado Brian",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "mongoose": "^8.4.4",
+    "morgan": "^1.10.0"
+  }
 }
