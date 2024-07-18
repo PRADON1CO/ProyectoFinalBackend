@@ -5,6 +5,7 @@ import './src/batabase/database.js'
 import path from "path";
 import { fileURLToPath } from 'url';
 import claseRouter from "./src/routes/clases.routes.js";
+import usuarioRouter from "./src/routes/usuarios.routes.js";
 
 //1- configuro un puerto
 const app = express();
@@ -36,3 +37,4 @@ app.use(express.static(path.join(__dirname, '/public')))
 // })
 
 app.use('/api', claseRouter)
+app.use('/api/usuarios',usuarioRouter)
