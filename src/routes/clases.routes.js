@@ -21,7 +21,7 @@ router
 router
   .route("/clases/:id")
   .get(obtenerClase)
-  .put(editarClase)
+  .put([validacionClase],editarClase)
   .delete(borraClase);
 
 export default router;
