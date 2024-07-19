@@ -7,6 +7,7 @@ import {
   obtenerClase,
 } from "../controllers/clases.controllers.js";
 import validacionClase from "../helpers/validaionClase.js";
+import verificarJWT from "../helpers/verificarJWT.js"
 
 const router = Router();
 
@@ -14,14 +15,14 @@ router.route("/prueba").get(listarClases);
 router
   .route("/clases")
   .post(
-    [validacionClase],
+    [verificarJWT, validacionClase],
     CrearClase
   )
   .get(listarClases);
 router
   .route("/clases/:id")
   .get(obtenerClase)
-  .put(editarClase)
-  .delete(borraClase);
+  .put([verificarJWT, validacionClase],editarClase)
+  .delete([verificarJWT],borraClase);
 
 export default router;
