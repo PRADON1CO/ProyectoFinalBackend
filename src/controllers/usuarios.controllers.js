@@ -1,5 +1,6 @@
 import Usuario from "../batabase/moduels/usuario.js";
 import bcrypt from "bcrypt";
+import generarJWT from "../helpers/generarJWT.js";
 
 export const crearUsuario = async (req, res) => {
     try{
@@ -40,8 +41,14 @@ export const login = async (req, res) => {
         if(!passwordValido){
             return res.status(400).json({memsaje: 'Correo o pasasword incorrecto -password'})
         }
+        // generar token
+            const token = await generarJWT(usuarioExistente._id, usuarioExistente.email)
         // enviar respuesta afirmativa
-        res.status(200).json({memsaje: 'Los datos del usuario son validos'})
+        res.status(200).json({
+            memsaje: 'Los datos del usuario son validos',
+            email,
+            token
+        })
         
     }catch(error){
         console.error(error);
