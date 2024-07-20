@@ -27,7 +27,7 @@ const usuarioSchema = new mongoose.Schema({
     type: String,
     required: true,
     minLength: 4,
-    maxLength: 15
+    maxLength: 35
   },
 });
 
