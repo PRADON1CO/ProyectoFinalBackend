@@ -6,13 +6,25 @@ const claseSchema = new Schema({
     required: true,
     minLength: 2,
     maxLength: 50,
-    unique: true
+    unique: true,
+    validate: {
+      validator: (valor) => {
+        const pattern = /^[a-zA-Z\s]+$/;
+        return pattern.test(valor);
+      }
+    }
   },
   nombreProfesor: {
     type: String,
     required: true,
     minLength: 2,
-    maxLength: 50
+    maxLength: 50,
+    validate: {
+      validator: (valor) => {
+        const pattern = /^[a-zA-Z\s]+$/;
+        return pattern.test(valor);
+      }
+    }
   },
   imagen: {
     type: String,
